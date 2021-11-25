@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
+use App\Jobs\CrawlerPageTitle;
 
 class ShortUrlController extends Controller
 {
@@ -99,6 +100,8 @@ class ShortUrlController extends Controller
 
         $shortUrl->fill($data);
         $shortUrl->save();
+
+        CrawlerPageTitle::dispatch($shortUrl);
 
         return redirect(route('short-urls.index'))->with('status', 'Short URL updated successfull');
     }

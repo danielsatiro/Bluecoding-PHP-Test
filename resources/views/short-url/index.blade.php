@@ -36,11 +36,14 @@
                                     <td scope="col">
                                         <a href="{{ route('short-urls.edit', ['short_url' => $shotUrl->id]) }}" class="btn edit" title="{{ __('Edit') }}">
                                             {{ __('Edit') }}
-                                        </a>
+                                        </a> |
                                         <a href="{{ route('short-urls.destroy', ['short_url' => $shotUrl->id]) }}" class="btn delete"
                                             onclick="event.preventDefault();
                                                 document.getElementById('shotUrl-form-{!! $shotUrl->id !!}').submit();" title="{{ __('Delete') }}">
                                             {{ __('Delete') }}
+                                        </a> |
+                                        <a href="{{ route('s.show', ['code' => App\Models\ShortUrl::encode($shotUrl->id)]) }}" class="btn go" title="{{ __('Go') }}" target="_blank">
+                                            {{ __('Go') }}
                                         </a>
                                         <form id="shotUrl-form-{{ $shotUrl->id }}" action="{{ route('short-urls.destroy', ['short_url' => $shotUrl->id]) }}" method="POST" style="display: none;">
                                             @csrf
