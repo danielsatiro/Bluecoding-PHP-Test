@@ -25,5 +25,8 @@ Config the file `.env` as the environment
     bootstrap/cache/
     storage/
 
+### Running Tests
+    php artinsa test
+
 ### Changing Queue connection
 The queue is configured to run synchronously, to run asynchronously change the `QUEUE_CONNECTION` key from `sync` to `redis` in the `.env` file and run the `php artisan queue:work &` line command
